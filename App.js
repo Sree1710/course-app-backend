@@ -46,6 +46,22 @@ app.post("/admviewstud",async(request,response)=>{
 
 })
 
+app.post("/studlogin",async(request,response)=>{
+    let data=request.body
+    let getUsername=data.username
+    let getPassword=data.password
+    let result=await studentModel.find({username:getUsername})
+    if (result.length>0) {
+        if (result[0].password==getPassword) {
+            response.json({"status":"success","data":result[0]})
+        } else {
+            response.json({"status":"Invalid Username Or Password !!!"})
+        }
+    } else {
+        response.json({"status":"Username Does Not Exist !!!"})
+    }
+})
+
 
 
 
