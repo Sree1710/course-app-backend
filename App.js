@@ -39,7 +39,12 @@ app.post("/studreg",async(request,response)=>{
     }
 })
 
+app.post("/admviewstud",async(request,response)=>{
+    let data=request.body.clgName
+    let result=await studentModel.find(data)
+    response.json(result)
 
+})
 
 
 
