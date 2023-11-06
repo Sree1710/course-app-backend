@@ -39,6 +39,13 @@ app.post("/studreg",async(request,response)=>{
     }
 })
 
+app.post("/admviewstud",async(request,response)=>{
+    let data=request.body
+    let result=await studentModel.find(data)
+    response.json(result)
+
+})
+
 
 
 
