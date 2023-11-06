@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(Cors())
 
-mongoose.connect("mongodb+srv://sreelekshmisl1710:Dharithri@cluster0.y83cozw.mongodb.net/collegeDB?retryWrites=true&w=majority",{useNewUrlParser:true})
+mongoose.connect("mongodb+srv://sreelekshmisl1710:Dharithri@cluster0.y83cozw.mongodb.net/courseDB?retryWrites=true&w=majority",{useNewUrlParser:true})
 
 app.post("/admaddclg",async(request,response)=>{
     let data=request.body
@@ -82,6 +82,12 @@ app.post("/clglogin",async(request,response)=>{
     } else {
         response.json({"status":"Username Does Not Exist !!!"})
     }
+})
+
+app.post("/clgviewstud",async(request,response)=>{
+    let data=request.body
+    let result=await studentModel.find(data)
+    response.json(result)
 })
 
 
