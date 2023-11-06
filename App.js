@@ -68,6 +68,21 @@ app.post("/studviewprofile",async(request,response)=>{
     response.json(result)
 })
 
+app.post("/clglogin",async(request,response)=>{
+    let data=request.body
+    let getUsername=data.username
+    let getPassword=data.password
+    let result=await collegeModel.find({username:getUsername})
+    if (result.length>0) {
+        if (result[0].password==getPassword) {
+            response.json({"status":"success","data":result[0]})
+        } else {
+            response.json({"status":"Invalid Username Or Password !!!"})
+        }
+    } else {
+        response.json({"status":"Username Does Not Exist !!!"})
+    }
+})
 
 
 
