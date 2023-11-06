@@ -14,8 +14,8 @@ mongoose.connect("mongodb+srv://sreelekshmisl1710:Dharithri@cluster0.y83cozw.mon
 
 app.post("/admaddclg",async(request,response)=>{
     let data=request.body
-    const college=new collegeModel(data)
-    let result=await college.save()
+    const colg=new collegeModel(data)
+    let result=await colg.save()
     if (result.clgName!="") {
         response.json({"status":"success"})
     } else {
