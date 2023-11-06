@@ -22,6 +22,11 @@ app.post("/admaddclg",async(request,response)=>{
     }
 })
 
+app.get("/admviewclg",async(request,response)=>{
+    let result=await collegeModel.find()
+    response.json(result)
+})
+
 
 
 
