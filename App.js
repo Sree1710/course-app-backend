@@ -84,7 +84,11 @@ app.post("/clglogin",async(request,response)=>{
     }
 })
 
-
+app.post("/clgviewstud",async(request,response)=>{
+    let data=request.body
+    let result=await studentModel.find(data)
+    response.json(result)
+})
 
 
 
