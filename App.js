@@ -3,6 +3,7 @@ const bodyParser=require('body-parser')
 const Cors=require('cors')
 const mongoose=require('mongoose')
 const collegeModel = require('./collegeModel')
+const studentModel = require('./studentModel')
 
 const app=express()
 app.use(bodyParser.json())
@@ -25,6 +26,17 @@ app.post("/admaddclg",async(request,response)=>{
 app.get("/admviewclg",async(request,response)=>{
     let result=await collegeModel.find()
     response.json(result)
+})
+
+app.post("/studreg",async(request,response)=>{
+    let data=request.body
+    const student=new studentModel(data)
+    let result=await student.save()
+    if (result.clgName!="") {
+        response.json({"status":"success"})
+    } else {
+        response.json({"status":"error"})
+    }
 })
 
 
