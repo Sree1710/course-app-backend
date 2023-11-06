@@ -62,7 +62,11 @@ app.post("/studlogin",async(request,response)=>{
     }
 })
 
-
+app.post("/studviewprofile",async(request,response)=>{
+    let data=request.body
+    let result=await studentModel.find(data)
+    response.json(result)
+})
 
 
 
