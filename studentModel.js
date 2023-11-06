@@ -1,8 +1,8 @@
 const mongoose=require('mongoose')
 const studentModel=mongoose.model("students",mongoose.Schema(
     {
-        clgName:{type:String,required:true},
-        studName:String,
+        clgName:String,
+        studName:{type:String,required:true},
         studAdmNo:String,
         studCurrSem:String,
         studDept:String,
