@@ -90,6 +90,18 @@ app.post("/clgviewstud",async(request,response)=>{
     response.json(result)
 })
 
+app.post("/clgsearchstud",async(request,response)=>{
+    let data=request.body
+    let getClgName=data.clgName
+    let getAdmNo=data.studAdmNo
+    let result=await studentModel.find({clgName:getClgName,studAdmNo:getAdmNo})
+    if (result.length>0 && result[0].studAdmNo==getAdmNo) {
+        response.json({"status":"success","data":result[0]})
+    } else {
+        response.json({"status":"Student Not Found!!"})
+    }
+    
+})
 
 
 
