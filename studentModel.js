@@ -1,7 +1,8 @@
 const mongoose=require('mongoose')
 const studentModel=mongoose.model("students",mongoose.Schema(
     {
-        clgName:String,
+        _id:mongoose.Schema.ObjectId,
+        clgName:{type:mongoose.Schema.Types.ObjectId,ref:'collegs'},
         studName:{type:String,required:true},
         studAdmNo:String,
         studCurrSem:String,
